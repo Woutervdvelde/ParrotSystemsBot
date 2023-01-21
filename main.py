@@ -11,7 +11,8 @@ class ParrotClient(discord.Client):
     def __init__(self, intents) -> None:
         super().__init__(intents=intents)
         self.tree = app_commands.CommandTree(self)
-        self.tree.sync()
+        self.sync()
+        
         self.tts = TTS()
         self.phrases = [
             "met liefde <3",
@@ -45,6 +46,9 @@ class ParrotClient(discord.Client):
             "dit bericht zie alleen jij... of toch niet?",
             "ik ben een bot, ik kan niet praten",
         ]
+
+    async def sync(self):
+        await self.tree.sync()
 
     async def setup_hook(self):
         guild = discord.Object(id=780139459072491550)
