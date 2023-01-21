@@ -14,9 +14,9 @@ class TTS:
         return CoquiTTS(model_name)
 
     # Returns a list of audio bytes
-    def synthesize(self, ctx):
-        filepath = f'{DEFAULT_AUDIO_FOLDER}/{ctx.message.id}.wav'
-        self.model.tts_to_file(text=ctx.message.content[4:], file_path=filepath)
+    def synthesize(self, text):
+        filepath = f'{DEFAULT_AUDIO_FOLDER}/{text}.wav'
+        self.model.tts_to_file(text=text, file_path=filepath)
         return filepath
 
     def delete_audio(self, filepath):
