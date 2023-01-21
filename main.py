@@ -67,5 +67,6 @@ async def tts(interaction: discord.Interaction, text: str, filename: Optional[st
 
     await interaction.response.send_message(random.choice(client.phrases), ephemeral=True)
     await interaction.channel.send(file=discord.File(file, filename=f"{filename}.wav"))
+    client.delete_file(file)
 
 client.run(config.CLIENT_TOKEN)
